@@ -1,0 +1,26 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 0,
+    "minor": 2
+  },
+  "configurePresets": [
+    {
+      "name": "riscv-debug-trinapi",
+      "displayName": "RISCV Debug (Trina-pi)",
+      "description": "Use RISCV toolchain for Trina-pi board (inherits from riscv-debug)",
+      "inherits": "riscv-debug",
+      "cacheVariables": {
+        "BOARD_NAME": "Trina-pi"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "riscv-debug-trinapi-build",
+      "displayName": "Build (Trina-pi)",
+      "description": "Build preset for Trina-pi board using riscv-debug-trinapi configuration",
+      "configurePreset": "riscv-debug-trinapi"
+    }
+  ]
+}

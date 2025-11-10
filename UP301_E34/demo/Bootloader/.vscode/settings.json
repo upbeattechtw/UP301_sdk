@@ -1,0 +1,11 @@
+{
+    "myProjectDir": "${workspaceFolder}",
+    "myOpenOcdCmdExe": "${workspaceFolder}/../../../../riscv-openocd-upbeat-20240919/bin/openocd.exe",
+    "myOpenOcdCmd_linux": "openocd",
+    "myDbgCmdExe": "${workspaceFolder}/../../../../xpack-riscv-none-elf-gcc-14.2.0-3-win32-x64/bin/riscv-none-elf-gdb.exe",
+    "myDbgCmd_linux": "${workspaceFolder}/../../../../xpack-riscv-none-elf-gcc-14.2.0-3-linux-x64/bin/riscv-none-elf-gdb",
+    "myOpenOcdCfg": "${workspaceFolder}/../../bsp",
+    "myOpenOcdTclScriptDir": "${workspaceFolder}/../../../../Misc/scripts/tcl",
+    "myElfPath": "${workspaceFolder}/build/Debug/${workspaceFolderBasename}_Debug.elf",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+}

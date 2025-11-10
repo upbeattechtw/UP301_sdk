@@ -1,0 +1,28 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 0,
+    "minor": 2
+  },
+  "configurePresets": [
+    {
+      "name": "riscv-debug",
+      "displayName": "RISCV Debug",
+      "description": "Use RISCV toolchain for debug build",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/riscv-toolchain.cmake",
+        "USE_METAL_STATIC_LIBS": "EXTERNAL",
+        "BOARD_NAME": "Trina-pi"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "riscv-debug-build",
+      "configurePreset": "riscv-debug"
+    }
+  ]
+}

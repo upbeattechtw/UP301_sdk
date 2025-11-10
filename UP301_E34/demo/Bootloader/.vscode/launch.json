@@ -1,0 +1,37 @@
+{
+    "configurations": [
+        {
+            "name": "Debug UP301",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "external",
+            "executable": "${config:myElfPath}",
+            "cwd": "${workspaceFolder}/build/Debug/",
+
+            "device": "riscv",
+            "runToEntryPoint": "main",
+            "svdFile": "",
+            "windows": {
+                "gdbPath": "${config:myDbgCmdExe}",
+            },
+            "linux": {
+                "gdbPath": "${config:myDbgCmd_linux}",
+            },
+            "gdbTarget": "localhost:3333",
+            "overrideLaunchCommands": [
+                "file ${workspaceFolderBasename}_Debug.elf",
+                "-enable-pretty-printing",
+                "set remote hardware-breakpoint-limit 4",
+                "set arch riscv:rv32",
+                "target remote localhost:3333",
+                "load", 
+                "set $pc = 0x40000000",
+                "break main",
+                "set print pretty on",
+                "set output-radix 16"
+            ],
+            "preLaunchTask": "Build and Launch OpenOCD",
+            "postDebugTask": "Stop OpenOCD"
+        }
+    ],
+}

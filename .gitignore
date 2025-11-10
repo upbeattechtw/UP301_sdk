@@ -1,0 +1,37 @@
+# .gitignore
+
+# ignore project logs
+*.log
+
+# ignore Automatically-generated file/folder
+Document/
+build/
+
+# ignore xcpb tmp files
+UP301_E34/xcpb/work/result/
+UP301_E34/xcpb/work/tmp/
+
+# ignore file
+
+# ignore
+*.bak
+
+# python cache
+**.pyc
+
+# binary in the `imgtool_scripts` folder
+UP301_E34/imgtool_scripts/*.bin
+
+# IDE / OS temporary files
+.Rhistory
+.DS_Store
+
+# quarto
+.quarto
+_freeze
+
+# Ignore all PDF files
+*.pdf
+
+# Ignore clangd-generated cache files
+.cache

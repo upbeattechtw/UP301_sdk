@@ -1,0 +1,138 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch OpenOCD",
+      "type": "process",
+      "options": {
+      "cwd": "${workspaceFolder}/build/Debug/",
+      },
+      "windows": {
+        "command": "${config:myOpenOcdCmdExe}",
+      },
+      "linux": {
+        "command": "${config:myOpenOcdCmd_linux}",
+      },
+      "args": [
+        "-c",
+        "gdb_port 3333",
+        "-c",
+        "telnet_port 4444",
+        "-c",
+        "tcl_port 6666",
+        "-c",
+        "set authkey 95270000",
+        "-c",
+        "set protocol jtag",
+        "-c",
+        "set connection probe",
+        "-c",
+        "bindto 0.0.0.0",
+        "-s",
+        "${config:myOpenOcdTclScriptDir}",
+        "-c",
+        "rename init fs_original_init; set fs_inited 0; proc init {} {global fs_inited; if {[set fs_inited]} {return}; set fs_inited 1; catch {source [find preinit.cfg]}; fs_original_init}",
+        "-f",
+        "${config:myOpenOcdCfg}/${input:evbFolder}/${input:openocdCfg}",
+        "-f",
+        "${config:myOpenOcdTclScriptDir}/autoload/worldguard.tcl",
+        "-f",
+        "${config:myOpenOcdTclScriptDir}/autoload/helpers.tcl",
+        "-c",
+        "reset init; halt; arm semihosting enable",
+      ],
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "line": 1,
+              "column": 1,
+              "message": 1
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": {
+              "regexp": "."
+            },
+            "endsPattern": {
+              "regexp": "semihosting is enabled"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "Stop OpenOCD",
+      "command": "echo ${input:terminate}",
+      "type": "process"
+    },
+    {
+      "label": "Build Project",
+      "type": "process",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}/build/",
+        "--config", 
+        "Debug"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build and Launch OpenOCD",
+      "dependsOn": [
+        "Build Project",
+        "Launch OpenOCD"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ],
+  "inputs": [
+      {
+        "id": "terminate",
+        "type": "command",
+        "command": "workbench.action.tasks.terminate",
+        "args": "Launch OpenOCD"
+      },
+      {
+          "id": "openocdCfg",
+          "type": "pickString",
+          "description": "Select OpenOCD config",
+          "options": [
+          "openocd_dual_ftdi2232.cfg",
+          "openocd_dual_jlink.cfg",
+          "openocd_E34_only_ftdi2232.cfg",
+          "openocd_E34_only_jlink.cfg"
+          ],
+          "default": "openocd_E34_only_ftdi2232.cfg"
+      },
+      {
+          "id": "evbFolder",
+          "type": "pickString",
+          "description": "Select Board",
+          "options": [
+          "UP301_EVB",
+          "UP201_EVB",
+          "Trina-pi"
+          ],
+          "default": "Trina-pi"
+      }
+    ]
+}
+
