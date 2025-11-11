@@ -1,21 +1,18 @@
-# Upbeat Tech UP301/UP201 SDK for development
+# Upbeat Tech UP201/UP301 SDK
 
-## How to build up a simple project on UP301/UP201 EVB platform
+This repository provides the software source code for the UP201 and UP301 evaluation boards.
+The required development toolchain is available separately in the [UPT_env repository](https://github.com/upbeattechtw/UPT_env).
 
-### What we need
-* Integrated development environment of CMAKE
-* VSCode IDE
-* RISCV toolchain debugger package
-* UP301/UP201 evaluation board
+Official product information:
 
-# Steps (under VSCode)
+- UP201/UP301 SoC: <https://www.upbeattechtw.com/Products/upbeat-soc>
+- Trina-Pi: <https://www.upbeattechtw.com/Products/trina-pi>
 
-1. Open VSCode IDE
-2. File -> Open folder -> select the `/UP301_E34/demo/Hello` or other project(s)
-3. File -> Import.. (General) - Exsiting projects into workingspace. Goto Next button, selsct root directory to wokingspace, and select the project(s). Then press Finish button.
-4. Build CMAKE config  
-5. Build project
+## User Guide
+
+Detailed user guides for the evaluation boards are available in the [Releases Page](https://github.com/UP301_sdk/releases).
+Please download the PDF(s) for complete instructions on using the UP201/UP301 evaluation boards and associated development tools.
 
 ## License
 
-These projects are licensed under the Apache License 2.0 - see the LICENSE file for details.
+These projects are licensed under the Apache License 2.0. See the LICENSE file for details.
