@@ -10,7 +10,7 @@ Official product information:
 
 ## User Guide
 
-Detailed user guides for the evaluation boards are available in the [Releases Page](https://github.com/UP301_sdk/releases).
+Detailed user guides for the evaluation boards are available in the [Releases Page](https://github.com/upbeattechtw/UP301_sdk/releases).
 Please download the PDF(s) for complete instructions on using the UP201/UP301 evaluation boards and associated development tools.
 
 ## License
